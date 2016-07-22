@@ -1,0 +1,9 @@
+F:\Projects\MDX\Future_BTST\ZerodhaClientSharp\bin\Debug\ZerodhaClientSharp.dll
+F:\Projects\MDX\Future_BTST\ZerodhaClientSharp\bin\Debug\ZerodhaClientSharp.pdb
+F:\Projects\MDX\Future_BTST\ZerodhaClientSharp\obj\Debug\ZerodhaClientSharp.csprojResolveAssemblyReference.cache
+F:\Projects\MDX\Future_BTST\ZerodhaClientSharp\obj\Debug\ZerodhaClientSharp.dll
+F:\Projects\MDX\Future_BTST\ZerodhaClientSharp\obj\Debug\ZerodhaClientSharp.pdb
+F:\Projects\MDX\Future_BTST\ZerodhaClientSharp\bin\Debug\RestSharp.dll
+F:\Projects\MDX\Future_BTST\ZerodhaClientSharp\bin\Debug\RestSharp.xml
+F:\Projects\MDX\Future_BTST\ZerodhaClientSharp\bin\Debug\Newtonsoft.Json.dll
+F:\Projects\MDX\Future_BTST\ZerodhaClientSharp\bin\Debug\websocket-sharp.dll
