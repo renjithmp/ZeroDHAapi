@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using ZerodhaClientSharp.Data;
+using ZerodhaClientSharp.ZWebSocket;
 
 namespace Future_BTST.Controllers
 {
@@ -32,6 +33,14 @@ public List<Instrument>  TestMe(bool test=true)
            var list= instrumentList.GetUnderlyingForFUT("aw230frvr95ajkzx", "NFO","NSE", "FUT","EQ",TimeSpan.FromDays(30));
            return list;
         }
+
+        public List<FullTick> GetTopGainers(string p1,string p2,string p3)
+{
+    List<Instrument> ins = TestMe(true);
+    MarketMovement move = new MarketMovement();
+  var topG=   move.TopGainers(10, ins.Select(x => x.instrument_token).ToList());
+  return topG;
+}
 
     }
 }

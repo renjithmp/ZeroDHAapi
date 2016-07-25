@@ -7,33 +7,33 @@ using ZerodhaClientSharp.ZWebSocket;
 
 namespace ZerodhaClientSharp.Data
 {
-    class MarketMovement
+    public class MarketMovement
     {
 
-        public List<FullTick> TopGainers(int count,List<string> instruments)
+        public List<FullTick> TopGainers(int count,List<int> instruments)
         {
             LiveData data = new LiveData();
             var marketData=data.GetDataForInstruments(instruments);
-             
-                marketData.Sort( (x,y) => Convert.ToInt32(((x.Response.Last_traded_price - x.Response.Close_price)/x.Response.Close_price - (y.Response.Last_traded_price - y.Response.Close_price)/y.Response.Close_price))) ;
-
-                return marketData.Take(count).Select(x => x.Response).ToList();
+            marketData.Sort((x, y) =>x.Response.Percentage_change.CompareTo(y.Response.Percentage_change));
+                //marketData.Sort( (x,y) => Convert.ToInt32(((y.Response.Last_traded_price - y.Response.Close_price)*100/y.Response.Close_price - (x.Response.Last_traded_price - x.Response.Close_price)*100/x.Response.Close_price))) ;
+                marketData.Reverse(); 
+                  return marketData.Take(count).Select(x => x.Response).ToList();
          
         }
 
 
-        public List<FullTick> TopLosers(int count, List<string> instruments)
+        public List<FullTick> TopLosers(int count, List<int> instruments)
         {
             LiveData data = new LiveData();
             var marketData = data.GetDataForInstruments(instruments);
 
-            marketData.Sort((x, y) => -Convert.ToInt32(((x.Response.Last_traded_price - x.Response.Close_price) / x.Response.Close_price - (y.Response.Last_traded_price - y.Response.Close_price) / y.Response.Close_price)));
+            marketData.Sort((x, y) => -Convert.ToInt32(((x.Response.Last_traded_price - x.Response.Close_price)*100 / x.Response.Close_price - (y.Response.Last_traded_price - y.Response.Close_price)*100 / y.Response.Close_price)));
 
             return marketData.Take(count).Select(x => x.Response).ToList();
 
         }
 
-        public List<FullTick> TopVolumeGainers(int count, List<string> instruments)
+        public List<FullTick> TopVolumeGainers(int count, List<int> instruments)
         {
             LiveData data = new LiveData();
             var marketData = data.GetDataForInstruments(instruments);
@@ -42,7 +42,7 @@ namespace ZerodhaClientSharp.Data
 
         }
 
-        public List<FullTick> TopGainersWithVolumeBreakOut(int minLookupCount, int maxLookUpCount, List<string> instruments,int expectedMinNumberOfResults)
+        public List<FullTick> TopGainersWithVolumeBreakOut(int minLookupCount, int maxLookUpCount, List<int> instruments,int expectedMinNumberOfResults)
         { 
             int resultCount = 0;
             int count=minLookupCount;

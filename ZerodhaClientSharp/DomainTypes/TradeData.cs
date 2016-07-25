@@ -26,19 +26,19 @@ namespace ZerodhaClientSharp.DomainTypes
                             row.TimeStamp = DateTime.Parse(candle[0].ToString());
 
                         if (item == 1)
-                            row.Open = Double.Parse(candle[1].ToString());
+                            row.Open = float.Parse(candle[1].ToString());
 
                         if (item == 2)
-                            row.High = Double.Parse(candle[2].ToString());
+                            row.High = float.Parse(candle[2].ToString());
 
                         if (item == 3)
-                            row.Low = Double.Parse(candle[3].ToString());
+                            row.Low = float.Parse(candle[3].ToString());
 
                         if (item == 4)
-                            row.Close = Double.Parse(candle[4].ToString());
+                            row.Close = float.Parse(candle[4].ToString());
 
                         if (item == 5)
-                            row.Volume = Double.Parse(candle[5].ToString());
+                            row.Volume = float.Parse(candle[5].ToString());
                     });
 
                     convertedList.Add(row);                    
@@ -53,11 +53,11 @@ namespace ZerodhaClientSharp.DomainTypes
     public class TradeDataRow
     {        
         public DateTime TimeStamp{get;set;}
-        public double Open{get;set;}
-        public double High{get;set;}
-        public double Low{get;set;} 
-        public double Close{get;set;}
-        public double Volume{get;set;}
+        public float Open{get;set;}
+        public float High{get;set;}
+        public float Low{get;set;} 
+        public float Close{get;set;}
+        public float Volume{get;set;}
 
 
     }

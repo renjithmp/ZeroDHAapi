@@ -11,10 +11,10 @@ namespace ZerodhaClientSharp.Data
             public int    exchange_token { get; set; }
             public string tradingsymbol { get; set; }
             public string name { get; set; }
-            public double last_price { get; set; }
+            public float last_price { get; set; }
             public string expiry { get; set; }
-            public double    strike { get; set; }
-            public double tick_size { get; set; }
+            public float    strike { get; set; }
+            public float tick_size { get; set; }
             public int    lot_size { get; set; }
             public string instrument_type { get; set; }
             public string segment { get; set; }
