@@ -9,7 +9,7 @@ using ZerodhaClientSharp.Client;
 
 namespace Future_BTST.Controllers
 {
-    public class ZerodhaController : Controller
+    public class ZerodhaController : ApiController
     {
         protected ZerodhaClient ZClient { get { return ZerodhaClient.GetClient(); } }
     }

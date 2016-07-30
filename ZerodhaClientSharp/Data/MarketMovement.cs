@@ -10,26 +10,28 @@ namespace ZerodhaClientSharp.Data
     public class MarketMovement
     {
 
-        public List<FullTick> TopGainers(int count,List<int> instruments)
+        private List<ResponsePackage<FullTick>> Sort(List<int> instruments)
         {
             LiveData data = new LiveData();
-            var marketData=data.GetDataForInstruments(instruments);
-            marketData.Sort((x, y) =>x.Response.Percentage_change.CompareTo(y.Response.Percentage_change));
+            var marketData = data.GetDataForInstruments(instruments);
+            marketData.Sort((x, y) => x.Response.Percentage_change.CompareTo(y.Response.Percentage_change));
+            return marketData;
+         }
+
+        public List<FullTick> TopGainers(int count,List<int> instruments)
+        {
+            var sortedMarketData = Sort(instruments);
                 //marketData.Sort( (x,y) => Convert.ToInt32(((y.Response.Last_traded_price - y.Response.Close_price)*100/y.Response.Close_price - (x.Response.Last_traded_price - x.Response.Close_price)*100/x.Response.Close_price))) ;
-                marketData.Reverse(); 
-                  return marketData.Take(count).Select(x => x.Response).ToList();
+            sortedMarketData.Reverse();
+            return sortedMarketData.Take(count).Select(x => x.Response).ToList();
          
         }
 
 
         public List<FullTick> TopLosers(int count, List<int> instruments)
         {
-            LiveData data = new LiveData();
-            var marketData = data.GetDataForInstruments(instruments);
-
-            marketData.Sort((x, y) => -Convert.ToInt32(((x.Response.Last_traded_price - x.Response.Close_price)*100 / x.Response.Close_price - (y.Response.Last_traded_price - y.Response.Close_price)*100 / y.Response.Close_price)));
-
-            return marketData.Take(count).Select(x => x.Response).ToList();
+            var sortedMarketData = Sort(instruments);
+             return sortedMarketData.Take(count).Select(x => x.Response).ToList();
 
         }
 
